@@ -16,3 +16,37 @@ $ git config --global user.email "YOu@email.com"
 확인방법
 git config user.name
 git config user.email
+
+[03월 30일]
+
+Firebase
+- firebase.js 의 파일을 fbase.js로 변경한다
+import firebase from 'firebase/compat/app';
+import "firebase/auth";
+...
+firebase.initializeApp(firebaseConfig);
+export const authService = firebase.auth();
+
+[04월 06일]
+
+useState
+- Router.js에 useState를 추가한다
+- react-router-dom 버전이 6버전이라면 Switch가 작동하지않아 Routes로 변경해주어야 한다 고로 다운그레이드를 시키도록 한다 $ npm react-router-dom@5.2.0
+const AppRouter = ({ isLoggedIn }) => {
+    // const [isLoggedIn, setIsLoggedIn] = useState(true);
+    return (
+        <Router>
+            <Switch>
+                {isLoggedIn ? (
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                ) : (
+                    <Route exact path="/">
+                        <Auth />
+                    </Route>
+                )}
+            </Switch>
+        </Router>
+    )
+}
