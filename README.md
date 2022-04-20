@@ -53,3 +53,24 @@ const AppRouter = ({ isLoggedIn }) => {
     )
 }
 ```
+
+[04월 13일]
+- useState를 사용
+```
+const [email, setEmail] = useState("");
+```
+
+- onChange를 사용하여 변경가능
+```
+  const onChange = (event) => {
+    // console.log(event.target.name)
+    const {
+      target : {name, value},
+    } = event;
+    if(name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  };
+```
