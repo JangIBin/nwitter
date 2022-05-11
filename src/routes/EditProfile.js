@@ -1,9 +1,3 @@
-import React from 'react';
+const EditProfile = () => <span>EditProfile</span>
 
-function EditProfile() {
-  return (
-    <div>EditProfile</div>
-  );
-}
-
-export default EditProfile;
+export default EditProfile
