@@ -44,7 +44,15 @@ const Home = ({ userObj }) => {
     };
 
     useEffect(() => {
-        getNweets();
+        dbService.collection("nweets").onSnapshot((snapshot) => {
+            const newArray = snapshot.docs.map((document) => ({
+                id:document.id,
+                ...document.data(),
+            }));
+            setNweet(newArray)
+        })
+
+        // getNweets();
     },[]);
 
     return (
@@ -59,7 +67,7 @@ const Home = ({ userObj }) => {
                 />
                 <input type="submit" value="Nweet" />
             </form>
-            {/* <div>
+            <div>
                 {nweets.map((nweet) => (
                     <Nweet
                         key={nweet.id}
@@ -67,7 +75,7 @@ const Home = ({ userObj }) => {
                         isOwner={nweet.creatorId === userObj.uid}
                     />
                 ))}
-            </div> */}
+            </div>
         </>
     );
 };

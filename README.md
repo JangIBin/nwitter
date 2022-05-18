@@ -1,5 +1,35 @@
 # 장이빈
 
+[5월 18일]
+
+- get함수를 사용하지 않고 React Hook를 사용, useEffect사용
+```
+    useEffect(() => {
+        dbService.collection("nweets").onSnapshot((snapshot) => {
+            const newArray = snapshot.docs.map((document) => ({
+                id:document.id,
+                ...document.data(),
+            }));
+            setNweet(newArray)
+        })
+
+        // getNweets();
+    },[]);
+```
+- 삭제 매소드 생성
+```
+const onDeleteClick = async() => {
+        const ok = window.confirm("삭제하시겠습니끼?");
+        console.log(ok);
+    }
+    if(ok) {
+        console.log(nweetOBJ.id);
+        const data = await dbService.doc(`nweetObj/${nweetObj.id}`).delete();
+        console.data();
+    }
+```
+
+
 [5월 11일]
 - fbase.js에 firestore추가
 ```
